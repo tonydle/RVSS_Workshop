@@ -56,7 +56,7 @@ class Operate:
         self.double_reset_comfirm = 0
         self.notification = 'Press ENTER to start SLAM'
         #
-        self.count_down = 180
+        self.count_down = 300
         self.start_time = time.time()
         self.control_clock = time.time()
         #
