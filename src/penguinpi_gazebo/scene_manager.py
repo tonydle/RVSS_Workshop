@@ -40,7 +40,7 @@ class SceneManager:
         print('Waiting for gazebo services...')
         rospy.wait_for_service('gazebo/spawn_urdf_model')
         spawn_model = rospy.ServiceProxy('gazebo/spawn_urdf_model', SpawnModel)
-        nx, ny = (8, 8)
+        nx, ny = (7, 7)
         x = np.linspace(-1.2, 1.2, nx)
         y = np.linspace(-1.2, 1.2, ny)
         xv, yv = np.meshgrid(x, y)
