@@ -26,6 +26,13 @@ from network.scripts.detector import Detector
 
 class Operate:
     def __init__(self, args):
+        self.folder = 'dataset/'
+        if not os.path.exists(self.folder):
+            os.makedirs(self.folder)
+        else:
+            os.rmdir(self.folder)
+            os.makedirs(self.folder)
+        
         # Initialise data parameters
         if args.play_data:
             self.pibot = dh.DatasetPlayer("record")
@@ -112,6 +119,7 @@ class Operate:
             self.notification = f'{len(np.unique(self.detector_output))-1} fruit type(s) detected'
 
     def save_image(self):
+        
         if self.command['save_image']:
             image = self.pibot.get_image()
             filename = "dataset/dataset_{}.png".format(self.image_id)
