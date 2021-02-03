@@ -32,7 +32,7 @@ open and run detector_test.ipynb from the browser
 
 
 ## Network Architecture:
-![Network Architecture](readme_pics/rvss_arch.png)
+![Network Architecture](readme_pics/rvss_arch.jpg)
 *Illustration of the network architecture, 
 notations (c1, c2, ect. corresponds to the variable name in res18_skip.py script)*
 
