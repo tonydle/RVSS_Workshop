@@ -8,6 +8,7 @@ sys.path.insert(0, "{}/integration".format(os.getcwd()))
 from control.pibot import PenguinPi
 import integration.DatasetHandler as dh
 import pygame
+import shutil
 
 # Import SLAM components
 sys.path.insert(0, "{}/slam".format(os.getcwd()))
@@ -30,7 +31,7 @@ class Operate:
         if not os.path.exists(self.folder):
             os.makedirs(self.folder)
         else:
-            os.rmdir(self.folder)
+            shutil.rmtree(self.folder)
             os.makedirs(self.folder)
         
         # Initialise data parameters
