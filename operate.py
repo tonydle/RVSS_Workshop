@@ -306,6 +306,7 @@ if __name__ == "__main__":
         drive_meas = operate.control()
         operate.update_slam(drive_meas)
         operate.record_data()
+        operate.save_image()
         operate.detect_fruit()
         # visualise
         operate.draw(canvas)
