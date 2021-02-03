@@ -26,7 +26,7 @@ from network.scripts.detector import Detector
 
 class Operate:
     def __init__(self, args):
-        self.folder = 'dataset/'
+        self.folder = 'pibot_dataset/'
         if not os.path.exists(self.folder):
             os.makedirs(self.folder)
         else:
@@ -119,15 +119,14 @@ class Operate:
             self.notification = f'{len(np.unique(self.detector_output))-1} fruit type(s) detected'
 
     def save_image(self):
-        
+        f_ = os.path.join(self.folder, f'img_{self.image_id}.png')
         if self.command['save_image']:
             image = self.pibot.get_image()
-            filename = "dataset/dataset_{}.png".format(self.image_id)
             image = cv2.cvtColor(image, cv2.COLOR_RGB2BGR)
-            cv2.imwrite(filename, image)
+            cv2.imwrite(f_, image)
             self.image_id += 1
             self.command['save_image'] = False
-
+            self.notification = f'{f_} is saved'
 
     def init_ekf(self, datadir, ip):
         fileK = "{}intrinsic.txt".format(datadir)
