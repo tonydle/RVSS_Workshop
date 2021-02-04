@@ -22,6 +22,8 @@ def get_real_dataset(json_f, output_folder):
     imdb = json.load(open(json_f))
     counter = 0
     for sample in imdb:
+        if not sample['Label']:
+            continue
         print(f'downloading sample {counter}')
         img_url = sample['Labeled Data']
         img = Image.open(urlopen(img_url))
