@@ -1,0 +1,21 @@
+# Final Challenge Rules
+
++ There are two rounds of competition. In each round, all teams will have the same map. Each team is allocated in a 10-minute slot. The team needs to run PiBot in sim and real together in this slot. 
+
++ The maps in sim and real are the same, however there are only three kinds of fruits in both sim and real, with two overlapping, for example, the sim map has apple, banana and lemon, the real map has apple, lemon and pear. The teams need to generate maps from sim and real, then fuse two maps to get the positions of all fruits.
+
++ Each team will receive a .zip file which contains all the maps. We will post it on Moodle and github repo. In your workshop folder, run git pull to get the map files. There's also a new version of triangulate.py and fusing_maps.py. You can pull from git or download from Moodle. 
+
++ To spawn the map in sim, copy 'map_1_sim.txt' and 'map_2_sim.txt' to your workshop folder and save that in /RVSS_Workshop/src/penguinpi_gazebo/. In a new terminal, run 'rosrun penguinpi_gazebo rvss.launch'. After the world is spawned, run 'rosrun penguinpi_gazebo scene_manager.py -l map_(num)_sim.txt'.
+
++ After the 10-minute slot, each team will have 15 minutes to run triangulation and map fusing. Make sure you are using the latest version of these scripts. You can download them from Moodle or copy the scripts in this folder and paste in your workshop folder \RVSS_Worshop. 
+
+  - To run triangulation: run 'python3 triangulate_real.py' or 'python3 triangulate_sim.py' depending on whether you are using real or sim robot. The output will be saved in 'fruit.txt'. **Make sure you take at least two images of each fruit and have SLAM running at the time you run prediction.** Press **P** to predict, press **N** to save the prediction map, press **S** at the end to save the SLAM map. You should keep 'fruit.txt' and 'slam.txt'.
+  - To run map fusing: Move the 'fruit.txt' and 'slam.txt' from both sim and real to the same workshop folder (You need to first run triangulation in both sim and real, then copy the files from simulator to your local device). Run 'python3 fusing_maps.py slam_1.txt fruit_1.txt slam_2.txt fruit_2.txt'. By default, the final result will be saved in 'result.txt'.
+
++ The team needs to send a single text file containing the locations of fruits to the judges (send to @Shawn Ge on Slack or send through email to u6139430@anu.edu.au). A template of text file is provided in the folder. 
+
++ All teams will be marked according to how many kinds of fruits they find and the RMSE value of the detected fruits. We don't measure how accurate the ARUCO marker positions are.
+
+  **Final mark = 25n*(1.05-RMSE/2)**, where n is the number of fruits that the team successfully detects. For example, if your team detected all four fruits and the RMSE of four fruits is 0.1m, you would get 100. You can get bonus mark if you get less than 0.1 RMSE.
+
